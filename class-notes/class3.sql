@@ -22,7 +22,7 @@ CREATE TABLE locations (
 	country_id CHAR (2) NOT NULL
 );
 
-CREATE or replace TABLE jobs (
+CREATE TABLE jobs (
 	job_id INT IDENTITY(1,1) PRIMARY KEY,
 	job_title VARCHAR (35) NOT NULL,
 	min_salary DECIMAL (8, 2) DEFAULT NULL,
@@ -55,6 +55,8 @@ CREATE TABLE dependents (
 	relationship VARCHAR (25) NOT NULL,
 	employee_id INT NOT NULL
 );
+
+
 INSERT INTO regions(region_id,region_name) VALUES (1,'Europe');
 INSERT INTO regions(region_id,region_name) VALUES (2,'Americas');
 INSERT INTO regions(region_id,region_name) VALUES (3,'Asia');
@@ -207,66 +209,32 @@ INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_i
 INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_id) VALUES (21,'Kirsten','Baer','Child',204);
 INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_id) VALUES (22,'Elvis','Khoo','Child',115);
 INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_id) VALUES (23,'Sandra','Baida','Child',116);
+INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_id) VALUES (24,'Cameron','Tobias','Child',117);
+INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_id) VALUES (25,'Kevin','Himuro','Child',118);
+INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_id) VALUES (26,'Rip','Colmenares','Child',119);
+INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_id) VALUES (27,'Julia','Raphaely','Child',114);
+INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_id) VALUES (28,'Woody','Russell','Child',145);
+INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_id) VALUES (29,'Alec','Partners','Child',146);
+INSERT INTO dependents(dependent_id,first_name,last_name,relationship,employee_id) VALUES (30,'Sandra','Taylor','Child',176);
+
+select * from jobs;
+SELECT 'EMPLOYEE - ', COUNT(*) FROM EMPLOYEES;
+
+SELECT 'job - ', COUNT(*) FROM jobs;
+SELECT 'dependent - ', COUNT(*) FROM dependents;
+SELECT 'department - ', COUNT(*) FROM departments;
+SELECT 'locastion - ', COUNT(*) FROM locations;
+SELECT 'countrie - ', COUNT(*) FROM countries;
+SELECT 'region - ', COUNT(*) FROM regions;
 
 select * from employees;
 
-undrop or replace table employees;
-
--- View current retention setting
-SHOW TABLES LIKE 'employees';
-
--- Set retention period to 30 days (Enterprise Edition required)
-
-
-select * from employees;
-
-drop table employees;
+job-19
+employee-40
+dependent-30
+department-11
+Location-7
+countrie-25
+Region-4
 
 select * from employees;
-
-undrop table employees;
-
-
-truncate table employees;
-
-ALTER TABLE employees RENAME TO employees_current;
-UNDROP TABLE employees;
-
-
-CREATE TABLE employees_restored AS 
-SELECT * 
-FROM employees AT(OFFSET => -3600);
-
-alter table employees add column comment string, senior_id int;
-
-select* from employees;
-
-alter table employees add column domain string;
-
-alter table employees drop column email,job_id;
-
-update employees 
-   set comment='snr',
-   senior_id=1000,
-   domain='claims'
-   where employee_id=106;
-
-   update employees 
-   set comment='jnr',
-   senior_id=10000,
-   domain='claim adjudication'
-   where employee_id in(100,101,102,103,104,105,107);   
-
-
-
-
-
-select top 5 * from employees;
-
-
-select top 5 * from SNOWFLAKE_SAMPLE_DATA.TPCDS_SF100TCL.CUSTOMER;
-
-select employee_id,
-      First_name,
-      salary from employees
-      order by first_name asc;
