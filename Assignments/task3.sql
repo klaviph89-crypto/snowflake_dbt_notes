@@ -1,5 +1,11 @@
 
 
+
+---tASK
+                            --
+    ---  STRING ,NUMBER ,DATE FUCNTIONS -- EACH 10
+
+
 select * from employees;
 
 -- 10 STRING FUNCTIONS
