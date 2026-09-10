@@ -1,12 +1,5 @@
 
 
-----Need Joins Count---
----need joins count and sqls---
-----inner:---
----left:---
----right:----
-----full:---
-
 
 
 
