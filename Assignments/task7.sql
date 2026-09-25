@@ -15,7 +15,7 @@
     SUBCATEGORY VARCHAR(30));
 
 
----create database vitech_dev_dbt;
+create database vitech_dev_dbt;
 
 
 CREATE OR REPLACE TABLE vitech_dev_dbt.PUBLIC.ORDERS (
@@ -49,8 +49,6 @@ FILE_FORMAT = (TYPE = 'CSV', SKIP_HEADER = 1);
 
     
  select * from VITECH_DEV_DBT.PUBLIC.ORDERS;
-
- 
 
 
 
